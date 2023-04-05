@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import {View ,SafeAreaView,ScrollView } from 'react-native';
+import {View ,SafeAreaView,ScrollView,Text } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 
 import {COLORS, icons, images, SIZES} from '../constants';
-import {Nearbyjobs, Popularjobs, screenHeaderBtn, Welcome} from '../components';
+import {Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome} from '../components';
 
 
 const Home = () => {
@@ -17,11 +17,39 @@ const Home = () => {
                 headerShadowVisible: false,
                 headerLeft : ()=>(<ScreenHeaderBtn iconUrl = {icons.menu} dimension = "60%"
                 />),
-                headerRight : ()=>(<ScreenHeaderBtn iconUrl = {icons.profile} dimension = "100%"
+                headerRight : ()=>(<ScreenHeaderBtn iconUrl = {images.profile} dimension = "100%"
                 />),
+                headerTitle:"",
+                 
              }}
              />
+             <ScrollView showsVerticalScrollIndicator={false}   > 
+             <View 
+                style={{
+                flex:1,
+                padding:SIZES.medium,
+                
+        
+              }}
+             >
+                <Welcome>   
+
+                </Welcome>
+                <Popularjobs >
+                    
+                </Popularjobs>
+                <Nearbyjobs >
+
+                </Nearbyjobs>
+
+
+
+             </View>
+             </ScrollView>
+        
         </SafeAreaView>
+     
+       
     )
 }
 
