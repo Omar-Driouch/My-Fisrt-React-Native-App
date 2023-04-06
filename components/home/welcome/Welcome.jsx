@@ -13,7 +13,10 @@ import {
 import { useRouter } from 'expo-router';
 
 import styles from './welcome.style'
-import { icons,SIZES } from '../../../constants'; 
+import { COLORS, icons,SIZES } from '../../../constants'; 
+
+const jopTypes=["Full-Time","Part-Time", "Freelancer"];
+var activeJopTypes="Full-Time";
 
 const Welcome = () => {
   const router = useRouter();
@@ -26,10 +29,24 @@ const Welcome = () => {
 
       <View style = { styles.searchContainer}>
          <View style ={styles.searchWrapper  }>
-          <TextInput style ={styles.searchInput} ></TextInput>
+        <TextInput style ={styles.searchInput} value ="" onChange={()=>{}} placeholder="Find your projects here..." placeholderTextColor={COLORS.white} ></TextInput>
          </View>
+         <TouchableOpacity style={styles.searchBtn} onPress={()=>{}} >
+          <Image source={icons.search} resizeMode = "contain" style={styles.searchBtnImage}></Image>
+         </TouchableOpacity>
       </View>
 
+      <View style={styles.tabsContainer}>
+        <FlatList 
+         data={jopTypes}
+         renderItem={({item})=>(  
+         <TouchableOpacity  style={styles.tab(jopTypes,item )} onPress={()=>{activeJopTypes=item;router.push(`/search/${item}`)}} >
+           <Text style={styles.tabText(activeJopTypes,item)}> {item} </Text>
+         </TouchableOpacity>  )}  keyExtractor={item=>item}  contentContainerStyle={{columnGap : SIZES.small}}
+         horizontal  snapToAlignment=''  > 
+
+         </FlatList>
+      </View>
 
 
 
