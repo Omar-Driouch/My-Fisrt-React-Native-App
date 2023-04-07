@@ -43,7 +43,7 @@ const Welcome = () => {
          <TouchableOpacity  style={styles.tab(jopTypes,item )} onPress={()=>{activeJopTypes=item;router.push(`/search/${item}`)}} >
            <Text style={styles.tabText(activeJopTypes,item)}> {item} </Text>
          </TouchableOpacity>  )}  keyExtractor={item=>item}  contentContainerStyle={{columnGap : SIZES.small}}
-         horizontal  snapToAlignment=''  > 
+         horizontal    > 
 
          </FlatList>
       </View>
